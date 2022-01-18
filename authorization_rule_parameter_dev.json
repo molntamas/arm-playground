@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "templateBaseURL": {
+      "value": "https://stracciac.blob.core.windows.net/master/"
+    },
+    "svcBusResourceGroup": {
+      "value": "Global-SvcBus-Abn"
+    },
+    "svcBusNamespaceName": {
+      "value": "SvcBus-Global-Abn-a5oc"
+    }
+  }
+}
