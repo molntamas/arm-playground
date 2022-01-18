@@ -62,7 +62,7 @@
   "outputs": {
     "gkcrmTicketServiceBusConnectionString": {
       "type": "securestring",
-      "value": "[listKeys(concat(parameters('svcBusNamespaceId'),'/topics/gkcrm-tickets/authorizationRules/gkportal',providers('Microsoft.ServiceBus', 'namespaces/topics/authorizationRules').apiVersions[0]).primaryConnectionString]"
+      "value": "providers('Microsoft.ServiceBus', 'namespaces/topics/authorizationRules').apiVersions[0]).primaryConnectionString"
     }
   }
 }
