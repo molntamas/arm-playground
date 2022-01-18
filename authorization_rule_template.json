@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "templateBaseURL": {
+      "type": "string",
+      "metadata": {
+        "description": "Base URL for the template repository"
+      }
+    },
+    "templateBaseSAS": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SAS token for the template repository."
+      }
+    },
+    "svcBusResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "Service Bus Resource Group"
+      }
+    },
+    "svcBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Service Bus Namespace Name"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "name": "[concat(deployment().name,'_authzNotif')]",
+      "resourceGroup": "[parameters('svcBusResourceGroup')]",
+      "dependsOn": [
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('templateBaseURL'),'Microsoft.ServiceBus/namespaces/topics/authorizationRules/template.json',parameters('templateBaseSAS'))]"
+        },
+        "parameters": {
+          "parentName": {
+            "value": "[parameters('svcBusNamespaceName')]"
+          },
+          "topicName": {
+            "value": "gkcrm-tickets"
+          },
+          "name": {
+            "value": "gkportal"
+          },
+          "rights": {
+            "value": [
+              "Send"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "gkcrmTicketServiceBusConnectionString": {
+      "type": "securestring",
+      "value": "[listKeys(concat(parameters('svcBusNamespaceId'),'/topics/gkcrm-tickets/authorizationRules/gkportal',providers('Microsoft.ServiceBus', 'namespaces/topics/authorizationRules').apiVersions[0]).primaryConnectionString]"
+    }
+  }
+}
