@@ -61,7 +61,7 @@
   ],
   "outputs": {
     "gkcrmTicketServiceBusConnectionString": {
-      "type": "securestring",
+      "type": "string",
       "value": "providers('Microsoft.ServiceBus', 'namespaces/topics/authorizationRules').apiVersions[0]).primaryConnectionString"
     }
   }
