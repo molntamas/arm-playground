@@ -10,6 +10,9 @@
     },
     "svcBusNamespaceName": {
       "value": "SvcBus-Global-Abn-a5oc"
+    },
+    "svcBusNamespaceId": {
+      "value": "/subscriptions/d1013f6b-d94d-4b35-bdf3-6167df9be8aa/resourceGroups/Global-SvcBus-Abn/providers/Microsoft.ServiceBus/namespaces/SvcBus-Global-Abn-a5oc"
     }
   }
 }
