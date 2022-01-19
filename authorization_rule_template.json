@@ -62,7 +62,7 @@
   "outputs": {
     "gkcrmTicketServiceBusConnectionString": {
       "type": "string",
-      "value": "test value"
+      "value": "[providers('Microsoft.ServiceBus', 'namespaces/topics/authorizationRules').apiVersions[0]).primaryConnectionString]"
     }
   }
 }
