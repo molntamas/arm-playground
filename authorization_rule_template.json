@@ -25,6 +25,12 @@
       "metadata": {
         "description": "Service Bus Namespace Name"
       }
+    },
+    "svcBusNamespaceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Service Bus Namespace ID"
+      }
     }
   },
   "resources": [
